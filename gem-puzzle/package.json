@@ -7,7 +7,8 @@
     "start": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "clear": "rd /s /q dist",
+    "lint": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   "homepage": "https://github.com/rolling-scopes-school/stesho-JSFE2022Q3#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
