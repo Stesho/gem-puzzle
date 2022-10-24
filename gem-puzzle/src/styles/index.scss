@@ -1,0 +1,14 @@
+@import './normalize.scss';
+@import './var.scss';
+@import '../pages/home/home.scss';
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $bg-color;
+  color: $text-color-light-blue;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}

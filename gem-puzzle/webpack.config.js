@@ -13,7 +13,7 @@ module.exports = {
   devtool,
   entry: './src/index.js',
   output: {
-    filename: '[name].js',
+    filename: 'script.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -22,7 +22,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: 'style.css',
     }),
   ],
   module: {
@@ -38,6 +38,13 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.ttf/i,
+        type: 'assests/rescource',
+        generator: {
+          filename: 'fonts/[name].[ext]',
+        },
       },
     ],
   },

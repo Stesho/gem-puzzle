@@ -1,0 +1,31 @@
+@import '../../styles/var.scss';
+
+.wrapper {
+  padding: 40px 0;
+}
+
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  width: 422px;
+  height: 422px;
+  padding: 10px;
+  border: 1px solid #fff;
+  gap: 10px;
+  &__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $text-color-blue;
+  }
+  &__emptyCell {
+    visibility: none;
+    background: none;
+  }
+}
