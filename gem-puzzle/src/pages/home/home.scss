@@ -22,7 +22,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 26px;
+    color: #fff;
     background-color: $text-color-blue;
+    user-select: none;
   }
   &__emptyCell {
     visibility: none;

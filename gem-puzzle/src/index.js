@@ -16,6 +16,7 @@ const start = () => {
   for (let i = 0; i < cells.length; i += 1) {
     cells[i].addEventListener('click', () => {
       puzzle.moveCell(i);
+      // console.log(puzzle.empty);
     });
   }
 };

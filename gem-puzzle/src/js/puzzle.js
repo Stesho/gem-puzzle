@@ -1,8 +1,8 @@
 class Puzzle {
   constructor(cellCount) {
     this.cellCount = cellCount;
-    this.cellArr = this.shuffle();
     this.emptyIndex = [];
+    this.cellArr = this.shuffle();
   }
 
   draw() {
@@ -27,11 +27,12 @@ class Puzzle {
   }
 
   render() {
-    const count = Math.sqrt(this.cellCount);
     const cells = document.querySelectorAll('.canvas__cell');
 
     for (let i = 0; i < this.cellCount; i += 1) {
       const [row, col] = this.getRowCol(i);
+
+      cells[i].textContent = this.cellArr[row][col];
 
       if (cells[i].classList.contains('canvas__emptyCell')) {
         cells[i].classList.remove('canvas__emptyCell');
@@ -63,11 +64,11 @@ class Puzzle {
       cellArr[i] = [];
     }
 
-    let k = 0;
-    for (let i = 0; i < sqrtCount; i += 1) {
-      for (let j = 0; j < sqrtCount; j += 1) {
-        cellArr[i][j] = tempArr[k];
-        k += 1;
+    for (let i = 0; i < count; i += 1) {
+      const [row, col] = this.getRowCol(i);
+      cellArr[row][col] = tempArr[i];
+      if (tempArr[i] === null) {
+        this.emptyIndex = [row, col];
       }
     }
 
@@ -77,11 +78,12 @@ class Puzzle {
   moveCell(cellIndex) {
     const [row, col] = this.getRowCol(cellIndex);
     const [emptyRow, emptyCol] = this.emptyIndex;
-    // console.log(this.cellArr[row][col], this.cellArr[emptyRow][emptyCol]);
-    // console.log(this.cellArrs[row][col]);
+    // console.log(this.cellArr[emptyRow][emptyCol]);
     if (this.isClickable(cellIndex)) {
       // eslint-disable-next-line max-len
       [this.cellArr[row][col], this.cellArr[emptyRow][emptyCol]] = [this.cellArr[emptyRow][emptyCol], this.cellArr[row][col]];
+      this.emptyIndex = [row, col];
+      console.log(this.cellArr);
       this.render();
     }
   }
