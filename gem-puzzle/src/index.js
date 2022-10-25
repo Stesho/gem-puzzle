@@ -7,6 +7,7 @@ const start = () => {
   const body = document.querySelector('body');
   body.innerHTML = html;
   renderHome();
+  alert('Привет, если вас не затруднит, буду очень благодарен, если проверите позже');
 };
 
 start();

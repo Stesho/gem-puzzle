@@ -4,6 +4,7 @@ class Puzzle {
     this.emptyIndex = [];
     this.cellArr = this.setCellArr();
     this.movesCount = 0;
+    this.isRendered = false;
   }
 
   draw() {
@@ -26,6 +27,7 @@ class Puzzle {
 
     this.shuffle();
     this.render();
+    this.isRendered = true;
   }
 
   render() {
@@ -92,7 +94,29 @@ class Puzzle {
       this.emptyIndex = [row, col];
       this.render();
       cells[index].classList.add('animationPopUp');
+      if (this.isRendered) {
+        this.movesCount += 1;
+        console.log(this.movesCount);
+      }
     }
+
+    if (this.checkArr() && this.isRendered) {
+      const modal = document.querySelector('.modal');
+      modal.classList.add('visible');
+    } else {
+      const modal = document.querySelector('.modal');
+      modal.classList.remove('visible');
+    }
+  }
+
+  checkArr() {
+    for (let i = 0; i < this.cellCount - 1; i += 1) {
+      const [row, col] = this.getRowCol(i);
+      if (this.cellArr[row][col] !== i + 1) {
+        return false;
+      }
+    }
+    return true;
   }
 
   isClickable(cellIndex) {
