@@ -33,10 +33,7 @@ class Puzzle {
       const [row, col] = this.getRowCol(i);
 
       cells[i].textContent = this.cellArr[row][col];
-
-      if (cells[i].classList.contains('canvas__emptyCell')) {
-        cells[i].classList.remove('canvas__emptyCell');
-      }
+      cells[i].classList = 'canvas__cell';
 
       if (this.cellArr[row][col] === null) {
         cells[i].classList.add('canvas__emptyCell');
@@ -76,15 +73,17 @@ class Puzzle {
   }
 
   moveCell(cellIndex) {
+    const cells = document.querySelectorAll('.canvas__cell');
     const [row, col] = this.getRowCol(cellIndex);
     const [emptyRow, emptyCol] = this.emptyIndex;
-    // console.log(this.cellArr[emptyRow][emptyCol]);
+    const index = emptyRow * Math.sqrt(this.cellCount) + emptyCol;
+
     if (this.isClickable(cellIndex)) {
       // eslint-disable-next-line max-len
       [this.cellArr[row][col], this.cellArr[emptyRow][emptyCol]] = [this.cellArr[emptyRow][emptyCol], this.cellArr[row][col]];
       this.emptyIndex = [row, col];
-      console.log(this.cellArr);
       this.render();
+      cells[index].classList.add('animationPopUp');
     }
   }
 
