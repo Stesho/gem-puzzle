@@ -2,7 +2,7 @@ class Puzzle {
   constructor(cellCount) {
     this.cellCount = cellCount;
     this.emptyIndex = [];
-    this.cellArr = this.shuffle();
+    this.cellArr = this.setCellArr();
   }
 
   draw() {
@@ -23,6 +23,7 @@ class Puzzle {
       }
     }
 
+    this.shuffle();
     this.render();
   }
 
@@ -42,6 +43,17 @@ class Puzzle {
   }
 
   shuffle() {
+    const moveCount = 100;
+    const min = 0;
+    const max = this.cellCount - 1;
+
+    for (let i = 0; i < moveCount; i += 1) {
+      const index = this.getRandom(min, max);
+      this.moveCell(index);
+    }
+  }
+
+  setCellArr() {
     const count = this.cellCount;
     const sqrtCount = Math.sqrt(this.cellCount);
     const tempArr = [];
@@ -51,11 +63,6 @@ class Puzzle {
       tempArr[i] = i + 1;
     }
     tempArr.push(null);
-
-    for (let i = tempArr.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [tempArr[i], tempArr[j]] = [tempArr[j], tempArr[i]];
-    }
 
     for (let i = 0; i < sqrtCount; i += 1) {
       cellArr[i] = [];
@@ -109,6 +116,11 @@ class Puzzle {
     const col = cellIndex % shift;
 
     return [row, col];
+  }
+
+  getRandom(min = 0, max = this.cellCount - 1) {
+    const rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
   }
 }
 
