@@ -3,6 +3,7 @@ class Puzzle {
     this.cellCount = cellCount;
     this.emptyIndex = [];
     this.cellArr = this.setCellArr();
+    this.movesCount = 0;
   }
 
   draw() {
@@ -43,7 +44,7 @@ class Puzzle {
   }
 
   shuffle() {
-    const moveCount = 100;
+    const moveCount = 200;
     const min = 0;
     const max = this.cellCount - 1;
 

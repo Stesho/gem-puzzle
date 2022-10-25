@@ -1,0 +1,54 @@
+@import '../../styles/var.scss';
+
+.panel {
+  display: flex;
+  justify-content: center;
+}
+
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  width: 422px;
+  height: 422px;
+  padding: 10px;
+  border: 2px solid $text-color-blue;
+  border-radius: 10px;
+  gap: 10px;
+  &__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    color: #fff;
+    background-color: $text-color-blue;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+  }
+  &__emptyCell {
+    visibility: none;
+    background: none;
+  }
+}
+
+.animationPopUp {
+  animation: popUp 0.5s ease;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
