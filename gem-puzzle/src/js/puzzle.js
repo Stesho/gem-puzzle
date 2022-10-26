@@ -1,3 +1,5 @@
+import moveSound from '../assets/audio/205688300.mp3';
+
 class Puzzle {
   constructor(cellCount) {
     this.cellCount = cellCount;
@@ -6,6 +8,11 @@ class Puzzle {
     this.movesCount = 0;
     this.isRendered = false;
     this.timer = {};
+    this.isSoundOn = localStorage.getItem('isSoundOn') !== 'false';
+  }
+
+  setIsRendered(value) {
+    this.isRendered = value;
   }
 
   draw() {
@@ -28,7 +35,6 @@ class Puzzle {
 
     this.shuffle();
     this.render();
-    this.isRendered = true;
   }
 
   render() {
@@ -55,6 +61,8 @@ class Puzzle {
       const index = this.getRandom(min, max);
       this.moveCell(index);
     }
+
+    this.isRendered = true;
   }
 
   setCellArr() {
@@ -88,8 +96,10 @@ class Puzzle {
     const [row, col] = this.getRowCol(cellIndex);
     const [emptyRow, emptyCol] = this.emptyIndex;
     const index = emptyRow * Math.sqrt(this.cellCount) + emptyCol;
+    const audio = new Audio(moveSound);
 
     if (this.isClickable(cellIndex)) {
+      // console.log(audio);
       // eslint-disable-next-line max-len
       [this.cellArr[row][col], this.cellArr[emptyRow][emptyCol]] = [this.cellArr[emptyRow][emptyCol], this.cellArr[row][col]];
       this.emptyIndex = [row, col];
@@ -97,6 +107,9 @@ class Puzzle {
       cells[index].classList.add('animationPopUp');
       if (this.isRendered) {
         this.movesCount += 1;
+      }
+      if (this.isRendered && this.isSoundOn) {
+        audio.play();
       }
     }
 

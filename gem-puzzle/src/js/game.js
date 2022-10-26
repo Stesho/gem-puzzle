@@ -33,6 +33,7 @@ const setHandler = (handler) => {
   });
 
   restart.addEventListener('click', () => {
+    handler.setIsRendered(false);
     handler.restart();
     moves.textContent = handler.movesCount;
     timer.textContent = '00:00';
@@ -40,7 +41,10 @@ const setHandler = (handler) => {
 };
 
 const renderGame = () => {
-  const puzzle = new Puzzle(9);
+  const cellCount = localStorage.getItem('puzzleType') || '3';
+  JSON.parse(cellCount);
+
+  const puzzle = new Puzzle(cellCount ** 2);
 
   puzzle.draw();
   setHandler(puzzle);
