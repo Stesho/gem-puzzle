@@ -5,6 +5,7 @@ class Puzzle {
     this.cellArr = this.setCellArr();
     this.movesCount = 0;
     this.isRendered = false;
+    this.timer = {};
   }
 
   draw() {
@@ -96,16 +97,20 @@ class Puzzle {
       cells[index].classList.add('animationPopUp');
       if (this.isRendered) {
         this.movesCount += 1;
-        console.log(this.movesCount);
       }
     }
 
     if (this.checkArr() && this.isRendered) {
       const modal = document.querySelector('.modal');
-      modal.classList.add('visible');
+      const caption = document.querySelector('.modal__caption');
+      const seconds = (this.timer.time % 60).toString().padStart(2, 0);
+      const minutes = Math.trunc(this.timer.time / 60).toString().padStart(2, 0);
+
+      modal.classList.add('visibleFlex');
+      caption.textContent = `Hooray! You solved the puzzle in ${minutes}:${seconds} and ${this.movesCount} moves!`;
     } else {
       const modal = document.querySelector('.modal');
-      modal.classList.remove('visible');
+      modal.classList.remove('visibleFlex');
     }
   }
 
@@ -146,6 +151,30 @@ class Puzzle {
   getRandom(min = 0, max = this.cellCount - 1) {
     const rand = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(rand);
+  }
+
+  restart() {
+    this.shuffle();
+    this.movesCount = 0;
+    this.timer.time = 0;
+    clearInterval(this.timer.timerId);
+  }
+
+  startTimer() {
+    const timerContent = document.querySelector('.score__timer span');
+    this.timer.time = 0;
+
+    this.timer.timerId = setInterval(() => {
+      this.timer.time += 1;
+      const seconds = this.timer.time % 60;
+      const minutes = Math.trunc(this.timer.time / 60);
+      // eslint-disable-next-line max-len
+      timerContent.textContent = `${minutes.toString().padStart(2, 0)}:${seconds.toString().padStart(2, 0)}`;
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.timer.timerId);
   }
 }
 

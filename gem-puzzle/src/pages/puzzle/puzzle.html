@@ -1,18 +1,25 @@
 <div class="game">
   <div class="panel">
-    <button class="panel__start">suffle and start</button>
-    <button class="panel__start">save</button>
-    <button class="panel__start">result</button>
+    <button class="panel__start btn">Suffle puzzle</button>
+  </div>
+  <div class="score">
+    <div class="score__moves">
+      Moves: <span>0</span>
+    </div>
+    <div class="score__timer">
+      Timer: <span>00:00</span>
+    </div>
   </div>
   <div class="canvas-wrapper">
     <div class="canvas">
       <div class="modal">
-        You are winner!
+        <div class="modal__caption">
+          You are winner!
+        </div>
+        <button class="modal__save btn">
+          Save result
+        </button>
       </div>
     </div>
-  </div>
-  <div class="score">
-    <div class="score__moves"></div>
-    <div class="score__timer"></div>
   </div>
 </div>

@@ -25,8 +25,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 8px;
     font-size: 26px;
-    color: #fff;
+    color: $text-color-white;
     background-color: $text-color-blue;
     border-radius: 10px;
     user-select: none;
@@ -41,6 +42,7 @@
 .modal {
   position: absolute;
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -48,15 +50,34 @@
   z-index: 1;
   left: 0;
   top: 0;
+  text-align: center;
   font-size: 24px;
-  color: #fff;
+  color: $text-color-white;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.6);
+  &__caption {
+    margin: 0 0 20px 0;
+  }
 }
 
-.visible {
+.score {
   display: flex;
+  justify-content: center;
+  &__moves,
+  &__timer {
+    padding: 0 10px;
+  }
 }
+
+.btn {
+  padding: 5px 10px;
+  border: 1px solid $text-color-white;
+  cursor: pointer;
+}
+
+// .visible {
+//   display: flex;
+// }
 
 .animationPopUp {
   animation: popUp 0.5s ease;

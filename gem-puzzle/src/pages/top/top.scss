@@ -1,0 +1,17 @@
+.top {
+  &__header {
+    display: flex;
+  }
+  &__table {
+    display: none;
+  }
+  &__listItem {
+    display: flex;
+  }
+  &__listMoves {
+    margin: 0 10px 0 0;
+  }
+  &__emptyList {
+    display: none;
+  }
+}
