@@ -179,10 +179,10 @@ class Puzzle {
 
     this.timer.timerId = setInterval(() => {
       this.timer.time += 1;
-      const seconds = this.timer.time % 60;
-      const minutes = Math.trunc(this.timer.time / 60);
+      const seconds = (this.timer.time % 60).toString().padStart(2, 0);
+      const minutes = Math.trunc(this.timer.time / 60).toString().padStart(2, 0);
       // eslint-disable-next-line max-len
-      timerContent.textContent = `${minutes.toString().padStart(2, 0)}:${seconds.toString().padStart(2, 0)}`;
+      timerContent.textContent = `${minutes}:${seconds}`;
     }, 1000);
   }
 

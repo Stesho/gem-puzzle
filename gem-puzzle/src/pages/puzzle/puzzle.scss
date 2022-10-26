@@ -64,6 +64,8 @@
 .score {
   display: flex;
   justify-content: center;
+  margin: 10px 0;
+  font-size: 18px;
   &__moves,
   &__timer {
     padding: 0 10px;
@@ -72,13 +74,10 @@
 
 .btn {
   padding: 5px 10px;
-  border: 1px solid $text-color-white;
+  border: 1px solid $text-color-light-blue;
+  border-radius: 5px;
   cursor: pointer;
 }
-
-// .visible {
-//   display: flex;
-// }
 
 .animationPopUp {
   animation: popUp 0.5s ease;

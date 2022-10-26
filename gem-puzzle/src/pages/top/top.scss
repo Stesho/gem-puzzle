@@ -1,15 +1,32 @@
+@import '../../styles/var.scss';
+
 .top {
   &__header {
     display: flex;
   }
   &__table {
     display: none;
+    max-width: 300px;
+    width: 100%;
+  }
+  &__headerTitle {
+    width: calc(100% / 3);
+    padding: 5px 0;
+    border-bottom: 1px solid $text-color-white;
+    text-align: center;
+    font-weight: 600;
+  }
+  &__listItem {
+    padding: 5px 0;
+    text-align: center;
+  }
+  &__listPosition,
+  &__listMoves,
+  &__listTimer {
+    width: calc(100% / 3);
   }
   &__listItem {
     display: flex;
-  }
-  &__listMoves {
-    margin: 0 10px 0 0;
   }
   &__emptyList {
     display: none;

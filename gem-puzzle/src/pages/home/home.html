@@ -1,19 +1,28 @@
 <div class="wrapper">
   <div class="container">
     <header class="header">
-      <h1 class="title">Gem puzzle</h1>
+      <h1 class="header__title">Gem puzzle</h1>
     </header>
     <main class="main">
       <nav class="menu">
+        <h2 class="menu__title">
+          Menu
+        </h2>
         <ul class="menu__list">
           <li class="menu__list-item">
-            <button>Game</button>
+            <!-- <button>Game</button> -->
+            <input type="radio" id="menu-game" name="menu" checked>
+            <label for="menu-game">Game</label>
           </li>
           <li class="menu__list-item">
-            <button>Top scores</button>
+            <!-- <button>Top scores</button> -->
+            <input type="radio" id="menu-top" name="menu">
+            <label for="menu-top">Top score</label>
           </li>
           <li class="menu__list-item">
-            <button>Settings</button>
+            <!-- <button>Settings</button> -->
+            <input type="radio" id="menu-settings" name="menu">
+            <label for="menu-settings">Settings</label>
           </li>
         </ul>
       </nav>

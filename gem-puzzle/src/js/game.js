@@ -1,9 +1,18 @@
 import Puzzle from './puzzle';
 
+const restartGame = (handler) => {
+  const moves = document.querySelector('.score__moves span');
+  const timer = document.querySelector('.score__timer span');
+
+  handler.setIsRendered(false);
+  handler.restart();
+  moves.textContent = handler.movesCount;
+  timer.textContent = '00:00';
+};
+
 const setHandler = (handler) => {
   const cells = document.querySelectorAll('.canvas__cell');
   const moves = document.querySelector('.score__moves span');
-  const timer = document.querySelector('.score__timer span');
   const result = document.querySelector('.modal__save');
   const restart = document.querySelector('.panel__start');
 
@@ -30,13 +39,12 @@ const setHandler = (handler) => {
       time: handler.timer.time,
     });
     localStorage.setItem('top', JSON.stringify(top));
+
+    restartGame(handler);
   });
 
   restart.addEventListener('click', () => {
-    handler.setIsRendered(false);
-    handler.restart();
-    moves.textContent = handler.movesCount;
-    timer.textContent = '00:00';
+    restartGame(handler);
   });
 };
 

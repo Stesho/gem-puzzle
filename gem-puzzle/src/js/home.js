@@ -27,7 +27,7 @@ const renderPage = (page) => {
 };
 
 const renderHome = () => {
-  const buttons = document.querySelectorAll('.menu__list-item button');
+  const buttons = document.querySelectorAll('.menu__list-item input');
   const pages = ['puzzle', 'top', 'settings'];
 
   for (let i = 0; i < buttons.length; i += 1) {

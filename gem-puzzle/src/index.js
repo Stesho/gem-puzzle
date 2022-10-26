@@ -9,7 +9,6 @@ const start = () => {
   body.innerHTML = html;
   renderHome();
   setupSettings();
-  // alert('Привет, если вас не затруднит, буду очень благодарен, если проверите позже');
 };
 
 start();

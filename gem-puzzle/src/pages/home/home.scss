@@ -4,12 +4,40 @@
 
 .header {
   margin: 0 0 20px 0;
+  &__title {
+    text-align: center;
+  }
 }
 
 .main {
   display: flex;
 }
 
+.menu {
+  min-width: 300px;
+  &__title {
+    margin: 0 0 20px 0;
+    padding: 5px 10px;
+  }
+  &__list {
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+  }
+  & label {
+    display: block;
+    padding: 12px 10px;
+    cursor: pointer;
+  }
+  & input {
+    display: none;
+    &:checked + label {
+      background-color: $text-color-blue;
+    }
+  }
+}
+
 .page {
   flex: 1 auto;
+  padding: 0 0 0 20px;
 }
